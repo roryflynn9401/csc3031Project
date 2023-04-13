@@ -3,6 +3,8 @@ package domain;
 public abstract class AbstractEcuProcessor implements EcuProcessor {
     private String speed;
     private boolean hybrid;
+
+    private EcuConfiguration configuration;
  
     public AbstractEcuProcessor(String s, boolean hyb) {
         this.speed = s;
@@ -22,4 +24,13 @@ public abstract class AbstractEcuProcessor implements EcuProcessor {
 	public String toString() {
         return getClass().getSimpleName() + " (" + speed + ")";
     }
+
+    public EcuConfiguration getConfiguration() {
+        return this.configuration;
+    }
+
+    public void setConfiguration(EcuConfiguration configuration) {
+        this.configuration = configuration;
+    }
+
 }
