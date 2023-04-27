@@ -35,9 +35,14 @@ public class ManageEcusPanel extends JPanel implements EntityListener {
 
         JButton editConfigurationButton = new JButton("Edit Configuration");
         editConfigurationButton.addActionListener(event -> {
-            var selectedItem =  jList.getSelectedIndex();
-            var config = ((Ecu)ecusModel.engines.get(selectedItem)).getEcuProcessor().getConfiguration();
-            new EditConfigurationDialog(owner,config).setVisible(true);
+            try{
+                var selectedItem =  jList.getSelectedIndex();
+                var config = ((Ecu)ecusModel.engines.get(selectedItem)).getEcuProcessor().getConfiguration();
+                new EditConfigurationDialog(owner,config).setVisible(true);
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(ManageEcusPanel.this, "Select a ECU to edit the configuration", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
         } );
 
         buttonPanel.add(editConfigurationButton);
