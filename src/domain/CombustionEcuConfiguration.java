@@ -17,4 +17,12 @@ public class CombustionEcuConfiguration extends EcuConfiguration{
     public boolean isRemapped(){
         return this.isRemapped;
     }
+
+    public void setCylinders(int cylinders){
+        this.cylinders = cylinders;
+    }
+
+    public void setRemapped(boolean isRemapped){
+        this.isRemapped = isRemapped;
+    }
 }

@@ -17,4 +17,12 @@ public class ElectricEcuConfiguration extends EcuConfiguration{
     public boolean hasFrunk(){
         return this.hasFrunk;
     }
+
+    public void setNoMotors(int noMotors){
+        this.noMotors = noMotors;
+    }
+
+    public void setHasFrunk(boolean hasFrunk){
+        this.hasFrunk = hasFrunk;
+    }
 }

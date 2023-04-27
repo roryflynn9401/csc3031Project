@@ -1,19 +1,11 @@
 package domain;
 
-import java.util.Stack;
 
-public class ConfigurationHistory {
-    private Stack<EcuConfiguration> history = new Stack<>();
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
-    public void save(EcuConfiguration configuration){
-        history.push(configuration);
-    }
-
-    public EcuConfiguration undo(){
-        if(!history.isEmpty()){
-            return history.pop();
-        }
-        return null;
-    }
+public enum ConfigurationHistory {
+    INSTANCE;
 
 }

@@ -1,6 +1,7 @@
 package ui;
 
 import db.*;
+import domain.Ecu;
 import domain.EcuInventoryFacade;
 import domain.IEcuFilter;
 
@@ -21,7 +22,8 @@ public class ManageEcusPanel extends JPanel implements EntityListener {
        
         // Scrollable list of engines
         ecusModel = new EcuListModel();
-        add(new JScrollPane(new JList(ecusModel)), BorderLayout.CENTER);
+        var jList = new JList(ecusModel);
+        add(new JScrollPane(jList), BorderLayout.CENTER);
        
         // Buttons to add and save
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -30,7 +32,16 @@ public class ManageEcusPanel extends JPanel implements EntityListener {
         JButton buildEngineButton = new JButton("Build Ecu");
         buildEngineButton.addActionListener(event -> new BuildEcuDialog(owner).setVisible(true));
         buttonPanel.add(buildEngineButton);
- 
+
+        JButton editConfigurationButton = new JButton("Edit Configuration");
+        editConfigurationButton.addActionListener(event -> {
+            var selectedItem =  jList.getSelectedIndex();
+            var config = ((Ecu)ecusModel.engines.get(selectedItem)).getEcuProcessor().getConfiguration();
+            new EditConfigurationDialog(owner,config).setVisible(true);
+        } );
+
+        buttonPanel.add(editConfigurationButton);
+
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(event -> {
             try {

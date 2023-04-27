@@ -53,4 +53,5 @@ public enum EcuInventoryFacade {
                 .filter(filter::filter)
                 .collect(Collectors.toList());
     }
+
 }

@@ -1,6 +1,8 @@
 package domain;
 
-public abstract class EcuConfiguration {
+import java.io.Serializable;
+
+public abstract class EcuConfiguration implements Serializable {
     private EcuFactory.Type engineType;
     private int topSpeed;
 
@@ -14,5 +16,12 @@ public abstract class EcuConfiguration {
     }
     public int getTopSpeed(){
         return topSpeed;
+    }
+
+    public void setEngineType(EcuFactory.Type type){
+        this.engineType = type;
+    }
+    public void setTopSpeed(int topSpeed){
+        this.topSpeed = topSpeed;
     }
 }
